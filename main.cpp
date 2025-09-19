@@ -2,7 +2,6 @@
 #include <onnxruntime/onnxruntime_cxx_api.h>
 #include <opencv2/opencv.hpp>
 #include <opencv2/dnn.hpp>
-#include <typeinfo>
 
 using namespace std;
 using namespace cv;
@@ -53,23 +52,59 @@ void parse_model(std::vector<Ort::Value>& output, const Letterbox& lb, Mat& img)
 
     vector<float> output_data(output_data_ptr, output_data_ptr + output_shape[0] * output_shape[1] * output_shape[2]);
 
+    vector<Rect> bboxes;
+    vector<float> scores;
+    vector<string> classes;
+
+    cerr << "Output shape: ";
+    for (auto s : output_shape) cerr << s << " ";
+    cerr << endl;
+
+
     for(size_t i = 0; i < output_shape[2]; i++){
         int xc = static_cast<int>(output_data[i]);
         int yc = static_cast<int>(output_data[i + output_shape[2]]); 
         int w = static_cast<int>(output_data[i + output_shape[2] * 2]);
         int h = static_cast<int>(output_data[i + output_shape[2] * 3]);
-        float score = output_data[i + output_shape[2] * 4];
-        int cls = static_cast<int>(output_data[i + output_shape[2] * 5]);
+        float score0 = output_data[i + output_shape[2] * 4];
+        float score1 = output_data[i + output_shape[2] * 5];
 
-        if(score < 0.25f) continue;
-
-        auto color = CV_RGB(255,0,255);
-        std::string name = class_names[cls] + ": " + std::to_string(static_cast<int>(score * 100)) + "%";
+        // if(score < 0.35f) continue;
 
         Rect bbox = deletterbox(Point(xc - w/2, yc - h/2), Point(xc + w/2, yc + h/2), lb);
 
-        rectangle(img, bbox, color, 2);
-        putText(img, name, {bbox.x, bbox.y}, FONT_HERSHEY_COMPLEX, 1, color);
+        if(score0 > score1 && score0 > 0.5f){
+            bboxes.push_back(bbox);
+            scores.push_back(score0);
+            classes.push_back(class_names[0]);
+            // rectangle(img, bbox, CV_RGB(255, 255, 0), 2);
+        }
+
+        else if(score0 < score1 && score1 > 0.5f){
+            bboxes.push_back(bbox);
+            scores.push_back(score1);
+            classes.push_back(class_names[1]);
+            // rectangle(img, bbox, CV_RGB(255,0,255), 2);
+        }
+    }
+
+    vector<int> indicies;
+    dnn::NMSBoxes(bboxes, scores, 0.45f, 0.45f, indicies);
+
+    for(auto idx : indicies){
+        auto color = CV_RGB(0,0,0);
+
+        cerr << classes[idx] << '\n';
+
+        if(classes[idx] == "open")
+            color = CV_RGB(255,0,255);
+        else
+            color = CV_RGB(0,255,0);
+
+        std::string name = classes[idx] + ": " + std::to_string(static_cast<int>(scores[idx] * 100)) + "%";
+
+        rectangle(img, bboxes[idx], color, 2);
+        putText(img, name, Point(bboxes[idx].x, bboxes[idx].y), FONT_HERSHEY_COMPLEX_SMALL, 1, color);
     }
 }
 
@@ -89,18 +124,29 @@ std::vector<Ort::Value> inferensing(const Letterbox& lb){
     return output;
 }
 
-int main(){
-    Mat new_img = imread("./Resources/povovrot.jpg");
-
+void work(Mat& img){
     Letterbox lb;
-    lb = letterboxing(new_img);
-
+    lb = letterboxing(img);
     auto output = inferensing(lb);
+    parse_model(output, lb, img);
+}
 
-    parse_model(output, lb, new_img);
+int main(){
+    VideoCapture cap(0);
+    Mat frame;
 
-    imshow("img", new_img);
-    waitKey(0);
+    while(true){
+        cap >> frame;
+        work(frame);
+        imshow("vid", frame);
+        if(waitKey(30) == 'q')
+            break;
+    }
 
+    // Mat img = imread("./Resources/face.jpg");
+    // work(img);
+    // imshow("img", img);
+    // waitKey(0);
+    
     return 0;
 }
