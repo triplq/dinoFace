@@ -56,11 +56,6 @@ void parse_model(std::vector<Ort::Value>& output, const Letterbox& lb, Mat& img)
     vector<float> scores;
     vector<string> classes;
 
-    cerr << "Output shape: ";
-    for (auto s : output_shape) cerr << s << " ";
-    cerr << endl;
-
-
     for(size_t i = 0; i < output_shape[2]; i++){
         int xc = static_cast<int>(output_data[i]);
         int yc = static_cast<int>(output_data[i + output_shape[2]]); 
@@ -69,22 +64,18 @@ void parse_model(std::vector<Ort::Value>& output, const Letterbox& lb, Mat& img)
         float score0 = output_data[i + output_shape[2] * 4];
         float score1 = output_data[i + output_shape[2] * 5];
 
-        // if(score < 0.35f) continue;
-
         Rect bbox = deletterbox(Point(xc - w/2, yc - h/2), Point(xc + w/2, yc + h/2), lb);
 
         if(score0 > score1 && score0 > 0.5f){
             bboxes.push_back(bbox);
             scores.push_back(score0);
             classes.push_back(class_names[0]);
-            // rectangle(img, bbox, CV_RGB(255, 255, 0), 2);
         }
 
         else if(score0 < score1 && score1 > 0.5f){
             bboxes.push_back(bbox);
             scores.push_back(score1);
             classes.push_back(class_names[1]);
-            // rectangle(img, bbox, CV_RGB(255,0,255), 2);
         }
     }
 
@@ -93,8 +84,6 @@ void parse_model(std::vector<Ort::Value>& output, const Letterbox& lb, Mat& img)
 
     for(auto idx : indicies){
         auto color = CV_RGB(0,0,0);
-
-        cerr << classes[idx] << '\n';
 
         if(classes[idx] == "open")
             color = CV_RGB(255,0,255);
@@ -142,11 +131,5 @@ int main(){
         if(waitKey(30) == 'q')
             break;
     }
-
-    // Mat img = imread("./Resources/face.jpg");
-    // work(img);
-    // imshow("img", img);
-    // waitKey(0);
-    
     return 0;
 }
