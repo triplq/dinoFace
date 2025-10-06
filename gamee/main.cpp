@@ -15,8 +15,8 @@ int main() {
 
     Level level;
 
-    Dino dino(sf::Texture("./Resources/boy.png"), Vector2f(400,420));
-    Background back(sf::Texture("./Resources/back.jpg.jpg"));
+    Dino dino(sf::Texture("Resources/boy.png"), Vector2f(400,420));
+    Background back(sf::Texture("Resources/back.jpg.jpg"));
     Clock clock;
 
     while(window.isOpen()){

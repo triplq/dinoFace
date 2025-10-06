@@ -39,7 +39,7 @@ include CMakeFiles/rules.ninja
 #############################################
 # Logical path to working directory; prefix for absolute paths.
 
-cmake_ninja_workdir = /Users/alexey/gamee/build/
+cmake_ninja_workdir = /Users/alexey/open_mouth/gamee/build/
 # =============================================================================
 # Object build statements for EXECUTABLE target gamee
 
@@ -49,7 +49,7 @@ cmake_ninja_workdir = /Users/alexey/gamee/build/
 
 build cmake_object_order_depends_target_gamee: phony || .
 
-build CMakeFiles/gamee.dir/main.cpp.o: CXX_COMPILER__gamee_unscanned_Debug /Users/alexey/gamee/main.cpp || cmake_object_order_depends_target_gamee
+build CMakeFiles/gamee.dir/main.cpp.o: CXX_COMPILER__gamee_unscanned_Debug /Users/alexey/open_mouth/gamee/main.cpp || cmake_object_order_depends_target_gamee
   CONFIG = Debug
   DEP_FILE = CMakeFiles/gamee.dir/main.cpp.o.d
   FLAGS = -g -std=gnu++17 -arch arm64
@@ -57,7 +57,7 @@ build CMakeFiles/gamee.dir/main.cpp.o: CXX_COMPILER__gamee_unscanned_Debug /User
   OBJECT_DIR = CMakeFiles/gamee.dir
   OBJECT_FILE_DIR = CMakeFiles/gamee.dir
 
-build CMakeFiles/gamee.dir/Character.cpp.o: CXX_COMPILER__gamee_unscanned_Debug /Users/alexey/gamee/Character.cpp || cmake_object_order_depends_target_gamee
+build CMakeFiles/gamee.dir/Character.cpp.o: CXX_COMPILER__gamee_unscanned_Debug /Users/alexey/open_mouth/gamee/Character.cpp || cmake_object_order_depends_target_gamee
   CONFIG = Debug
   DEP_FILE = CMakeFiles/gamee.dir/Character.cpp.o.d
   FLAGS = -g -std=gnu++17 -arch arm64
@@ -65,7 +65,7 @@ build CMakeFiles/gamee.dir/Character.cpp.o: CXX_COMPILER__gamee_unscanned_Debug 
   OBJECT_DIR = CMakeFiles/gamee.dir
   OBJECT_FILE_DIR = CMakeFiles/gamee.dir
 
-build CMakeFiles/gamee.dir/Dino.cpp.o: CXX_COMPILER__gamee_unscanned_Debug /Users/alexey/gamee/Dino.cpp || cmake_object_order_depends_target_gamee
+build CMakeFiles/gamee.dir/Dino.cpp.o: CXX_COMPILER__gamee_unscanned_Debug /Users/alexey/open_mouth/gamee/Dino.cpp || cmake_object_order_depends_target_gamee
   CONFIG = Debug
   DEP_FILE = CMakeFiles/gamee.dir/Dino.cpp.o.d
   FLAGS = -g -std=gnu++17 -arch arm64
@@ -73,7 +73,7 @@ build CMakeFiles/gamee.dir/Dino.cpp.o: CXX_COMPILER__gamee_unscanned_Debug /User
   OBJECT_DIR = CMakeFiles/gamee.dir
   OBJECT_FILE_DIR = CMakeFiles/gamee.dir
 
-build CMakeFiles/gamee.dir/Background.cpp.o: CXX_COMPILER__gamee_unscanned_Debug /Users/alexey/gamee/Background.cpp || cmake_object_order_depends_target_gamee
+build CMakeFiles/gamee.dir/Background.cpp.o: CXX_COMPILER__gamee_unscanned_Debug /Users/alexey/open_mouth/gamee/Background.cpp || cmake_object_order_depends_target_gamee
   CONFIG = Debug
   DEP_FILE = CMakeFiles/gamee.dir/Background.cpp.o.d
   FLAGS = -g -std=gnu++17 -arch arm64
@@ -81,7 +81,7 @@ build CMakeFiles/gamee.dir/Background.cpp.o: CXX_COMPILER__gamee_unscanned_Debug
   OBJECT_DIR = CMakeFiles/gamee.dir
   OBJECT_FILE_DIR = CMakeFiles/gamee.dir
 
-build CMakeFiles/gamee.dir/Level.cpp.o: CXX_COMPILER__gamee_unscanned_Debug /Users/alexey/gamee/Level.cpp || cmake_object_order_depends_target_gamee
+build CMakeFiles/gamee.dir/Level.cpp.o: CXX_COMPILER__gamee_unscanned_Debug /Users/alexey/open_mouth/gamee/Level.cpp || cmake_object_order_depends_target_gamee
   CONFIG = Debug
   DEP_FILE = CMakeFiles/gamee.dir/Level.cpp.o.d
   FLAGS = -g -std=gnu++17 -arch arm64
@@ -114,7 +114,7 @@ build gamee: CXX_EXECUTABLE_LINKER__gamee_Debug CMakeFiles/gamee.dir/main.cpp.o 
 # Utility command for edit_cache
 
 build CMakeFiles/edit_cache.util: CUSTOM_COMMAND
-  COMMAND = cd /Users/alexey/gamee/build && /opt/homebrew/bin/ccmake -S/Users/alexey/gamee -B/Users/alexey/gamee/build
+  COMMAND = cd /Users/alexey/open_mouth/gamee/build && /opt/homebrew/bin/ccmake -S/Users/alexey/open_mouth/gamee -B/Users/alexey/open_mouth/gamee/build
   DESC = Running CMake cache editor...
   pool = console
   restat = 1
@@ -126,7 +126,7 @@ build edit_cache: phony CMakeFiles/edit_cache.util
 # Utility command for rebuild_cache
 
 build CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
-  COMMAND = cd /Users/alexey/gamee/build && /opt/homebrew/bin/cmake --regenerate-during-build -S/Users/alexey/gamee -B/Users/alexey/gamee/build
+  COMMAND = cd /Users/alexey/open_mouth/gamee/build && /opt/homebrew/bin/cmake --regenerate-during-build -S/Users/alexey/open_mouth/gamee -B/Users/alexey/open_mouth/gamee/build
   DESC = Running CMake to regenerate build system...
   pool = console
   restat = 1
@@ -142,7 +142,7 @@ build rebuild_cache: phony CMakeFiles/rebuild_cache.util
 # =============================================================================
 
 #############################################
-# Folder: /Users/alexey/gamee/build
+# Folder: /Users/alexey/open_mouth/gamee/build
 
 build all: phony gamee
 
@@ -153,14 +153,14 @@ build all: phony gamee
 #############################################
 # Re-run CMake if any of its inputs changed.
 
-build build.ninja /Users/alexey/gamee/build/cmake_install.cmake: RERUN_CMAKE | /Users/alexey/gamee/CMakeLists.txt /opt/homebrew/share/cmake/Modules/CMakeCXXInformation.cmake /opt/homebrew/share/cmake/Modules/CMakeCommonLanguageInclude.cmake /opt/homebrew/share/cmake/Modules/CMakeGenericSystem.cmake /opt/homebrew/share/cmake/Modules/CMakeInitializeConfigs.cmake /opt/homebrew/share/cmake/Modules/CMakeLanguageInformation.cmake /opt/homebrew/share/cmake/Modules/CMakeSystemSpecificInformation.cmake /opt/homebrew/share/cmake/Modules/CMakeSystemSpecificInitialize.cmake /opt/homebrew/share/cmake/Modules/Compiler/AppleClang-CXX.cmake /opt/homebrew/share/cmake/Modules/Compiler/CMakeCommonCompilerMacros.cmake /opt/homebrew/share/cmake/Modules/Compiler/Clang.cmake /opt/homebrew/share/cmake/Modules/Compiler/GNU.cmake /opt/homebrew/share/cmake/Modules/Internal/CMakeCXXLinkerInformation.cmake /opt/homebrew/share/cmake/Modules/Internal/CMakeCommonLinkerInformation.cmake /opt/homebrew/share/cmake/Modules/Linker/AppleClang-CXX.cmake /opt/homebrew/share/cmake/Modules/Linker/AppleClang.cmake /opt/homebrew/share/cmake/Modules/Platform/Apple-AppleClang-CXX.cmake /opt/homebrew/share/cmake/Modules/Platform/Apple-Clang-CXX.cmake /opt/homebrew/share/cmake/Modules/Platform/Apple-Clang.cmake /opt/homebrew/share/cmake/Modules/Platform/Darwin-Initialize.cmake /opt/homebrew/share/cmake/Modules/Platform/Darwin.cmake /opt/homebrew/share/cmake/Modules/Platform/Linker/Apple-AppleClang-CXX.cmake /opt/homebrew/share/cmake/Modules/Platform/Linker/Apple-AppleClang.cmake /opt/homebrew/share/cmake/Modules/Platform/UnixPaths.cmake CMakeCache.txt CMakeFiles/4.1.0/CMakeCXXCompiler.cmake CMakeFiles/4.1.0/CMakeSystem.cmake
+build build.ninja /Users/alexey/open_mouth/gamee/build/cmake_install.cmake: RERUN_CMAKE | /Users/alexey/open_mouth/gamee/CMakeLists.txt /opt/homebrew/share/cmake/Modules/CMakeCXXInformation.cmake /opt/homebrew/share/cmake/Modules/CMakeCommonLanguageInclude.cmake /opt/homebrew/share/cmake/Modules/CMakeGenericSystem.cmake /opt/homebrew/share/cmake/Modules/CMakeInitializeConfigs.cmake /opt/homebrew/share/cmake/Modules/CMakeLanguageInformation.cmake /opt/homebrew/share/cmake/Modules/CMakeSystemSpecificInformation.cmake /opt/homebrew/share/cmake/Modules/CMakeSystemSpecificInitialize.cmake /opt/homebrew/share/cmake/Modules/Compiler/AppleClang-CXX.cmake /opt/homebrew/share/cmake/Modules/Compiler/CMakeCommonCompilerMacros.cmake /opt/homebrew/share/cmake/Modules/Compiler/Clang.cmake /opt/homebrew/share/cmake/Modules/Compiler/GNU.cmake /opt/homebrew/share/cmake/Modules/Internal/CMakeCXXLinkerInformation.cmake /opt/homebrew/share/cmake/Modules/Internal/CMakeCommonLinkerInformation.cmake /opt/homebrew/share/cmake/Modules/Linker/AppleClang-CXX.cmake /opt/homebrew/share/cmake/Modules/Linker/AppleClang.cmake /opt/homebrew/share/cmake/Modules/Platform/Apple-AppleClang-CXX.cmake /opt/homebrew/share/cmake/Modules/Platform/Apple-Clang-CXX.cmake /opt/homebrew/share/cmake/Modules/Platform/Apple-Clang.cmake /opt/homebrew/share/cmake/Modules/Platform/Darwin-Initialize.cmake /opt/homebrew/share/cmake/Modules/Platform/Darwin.cmake /opt/homebrew/share/cmake/Modules/Platform/Linker/Apple-AppleClang-CXX.cmake /opt/homebrew/share/cmake/Modules/Platform/Linker/Apple-AppleClang.cmake /opt/homebrew/share/cmake/Modules/Platform/UnixPaths.cmake CMakeCache.txt CMakeFiles/4.1.0/CMakeCXXCompiler.cmake CMakeFiles/4.1.0/CMakeSystem.cmake
   pool = console
 
 
 #############################################
 # A missing CMake input file is not an error.
 
-build /Users/alexey/gamee/CMakeLists.txt /opt/homebrew/share/cmake/Modules/CMakeCXXInformation.cmake /opt/homebrew/share/cmake/Modules/CMakeCommonLanguageInclude.cmake /opt/homebrew/share/cmake/Modules/CMakeGenericSystem.cmake /opt/homebrew/share/cmake/Modules/CMakeInitializeConfigs.cmake /opt/homebrew/share/cmake/Modules/CMakeLanguageInformation.cmake /opt/homebrew/share/cmake/Modules/CMakeSystemSpecificInformation.cmake /opt/homebrew/share/cmake/Modules/CMakeSystemSpecificInitialize.cmake /opt/homebrew/share/cmake/Modules/Compiler/AppleClang-CXX.cmake /opt/homebrew/share/cmake/Modules/Compiler/CMakeCommonCompilerMacros.cmake /opt/homebrew/share/cmake/Modules/Compiler/Clang.cmake /opt/homebrew/share/cmake/Modules/Compiler/GNU.cmake /opt/homebrew/share/cmake/Modules/Internal/CMakeCXXLinkerInformation.cmake /opt/homebrew/share/cmake/Modules/Internal/CMakeCommonLinkerInformation.cmake /opt/homebrew/share/cmake/Modules/Linker/AppleClang-CXX.cmake /opt/homebrew/share/cmake/Modules/Linker/AppleClang.cmake /opt/homebrew/share/cmake/Modules/Platform/Apple-AppleClang-CXX.cmake /opt/homebrew/share/cmake/Modules/Platform/Apple-Clang-CXX.cmake /opt/homebrew/share/cmake/Modules/Platform/Apple-Clang.cmake /opt/homebrew/share/cmake/Modules/Platform/Darwin-Initialize.cmake /opt/homebrew/share/cmake/Modules/Platform/Darwin.cmake /opt/homebrew/share/cmake/Modules/Platform/Linker/Apple-AppleClang-CXX.cmake /opt/homebrew/share/cmake/Modules/Platform/Linker/Apple-AppleClang.cmake /opt/homebrew/share/cmake/Modules/Platform/UnixPaths.cmake CMakeCache.txt CMakeFiles/4.1.0/CMakeCXXCompiler.cmake CMakeFiles/4.1.0/CMakeSystem.cmake: phony
+build /Users/alexey/open_mouth/gamee/CMakeLists.txt /opt/homebrew/share/cmake/Modules/CMakeCXXInformation.cmake /opt/homebrew/share/cmake/Modules/CMakeCommonLanguageInclude.cmake /opt/homebrew/share/cmake/Modules/CMakeGenericSystem.cmake /opt/homebrew/share/cmake/Modules/CMakeInitializeConfigs.cmake /opt/homebrew/share/cmake/Modules/CMakeLanguageInformation.cmake /opt/homebrew/share/cmake/Modules/CMakeSystemSpecificInformation.cmake /opt/homebrew/share/cmake/Modules/CMakeSystemSpecificInitialize.cmake /opt/homebrew/share/cmake/Modules/Compiler/AppleClang-CXX.cmake /opt/homebrew/share/cmake/Modules/Compiler/CMakeCommonCompilerMacros.cmake /opt/homebrew/share/cmake/Modules/Compiler/Clang.cmake /opt/homebrew/share/cmake/Modules/Compiler/GNU.cmake /opt/homebrew/share/cmake/Modules/Internal/CMakeCXXLinkerInformation.cmake /opt/homebrew/share/cmake/Modules/Internal/CMakeCommonLinkerInformation.cmake /opt/homebrew/share/cmake/Modules/Linker/AppleClang-CXX.cmake /opt/homebrew/share/cmake/Modules/Linker/AppleClang.cmake /opt/homebrew/share/cmake/Modules/Platform/Apple-AppleClang-CXX.cmake /opt/homebrew/share/cmake/Modules/Platform/Apple-Clang-CXX.cmake /opt/homebrew/share/cmake/Modules/Platform/Apple-Clang.cmake /opt/homebrew/share/cmake/Modules/Platform/Darwin-Initialize.cmake /opt/homebrew/share/cmake/Modules/Platform/Darwin.cmake /opt/homebrew/share/cmake/Modules/Platform/Linker/Apple-AppleClang-CXX.cmake /opt/homebrew/share/cmake/Modules/Platform/Linker/Apple-AppleClang.cmake /opt/homebrew/share/cmake/Modules/Platform/UnixPaths.cmake CMakeCache.txt CMakeFiles/4.1.0/CMakeCXXCompiler.cmake CMakeFiles/4.1.0/CMakeSystem.cmake: phony
 
 
 #############################################

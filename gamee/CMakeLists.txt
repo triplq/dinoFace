@@ -5,6 +5,7 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 set(SFML_ROOT "/opt/homebrew/opt/sfml")
+file(COPY ${CMAKE_SOURCE_DIR}/Resources DESTINATION ${CMAKE_BINARY_DIR})
 
 include_directories(${SFML_ROOT}/include)
 link_directories(${SFML_ROOT}/lib)

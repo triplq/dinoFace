@@ -42,7 +42,7 @@ rule CUSTOM_COMMAND
 # Rule for re-running cmake.
 
 rule RERUN_CMAKE
-  command = /opt/homebrew/bin/cmake --regenerate-during-build -S/Users/alexey/gamee -B/Users/alexey/gamee/build
+  command = /opt/homebrew/bin/cmake --regenerate-during-build -S/Users/alexey/open_mouth/gamee -B/Users/alexey/open_mouth/gamee/build
   description = Re-running CMake...
   generator = 1
 
