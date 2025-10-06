@@ -1,0 +1,3 @@
+/Users/alexey/gamee/build/CMakeFiles/gamee.dir
+/Users/alexey/gamee/build/CMakeFiles/edit_cache.dir
+/Users/alexey/gamee/build/CMakeFiles/rebuild_cache.dir

@@ -66,13 +66,13 @@ void parse_model(std::vector<Ort::Value>& output, const Letterbox& lb, Mat& img)
 
         Rect bbox = deletterbox(Point(xc - w/2, yc - h/2), Point(xc + w/2, yc + h/2), lb);
 
-        if(score0 > score1 && score0 > 0.5f){
+        if(score0 > score1 && score0 > 0.4f){
             bboxes.push_back(bbox);
             scores.push_back(score0);
             classes.push_back(class_names[0]);
         }
 
-        else if(score0 < score1 && score1 > 0.5f){
+        else if(score0 < score1 && score1 > 0.4f){
             bboxes.push_back(bbox);
             scores.push_back(score1);
             classes.push_back(class_names[1]);
@@ -80,7 +80,7 @@ void parse_model(std::vector<Ort::Value>& output, const Letterbox& lb, Mat& img)
     }
 
     vector<int> indicies;
-    dnn::NMSBoxes(bboxes, scores, 0.45f, 0.45f, indicies);
+    dnn::NMSBoxes(bboxes, scores, 0.30f, 0.45f, indicies);
 
     for(auto idx : indicies){
         auto color = CV_RGB(0,0,0);
