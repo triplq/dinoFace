@@ -5,18 +5,24 @@
 
 class Character{
 protected:
-    float speed;
-    float g = 980.0f;
+    const float speed;
+    float g = 9.8f;
     sf::Sprite *sprite;
     sf::Texture texture;
-    bool on_floor;
+    bool grounded;
+    sf::Vector2f velocity;
+    // const float E = 0.1f;
+
+    float dx;
+    float dy;
 
 public:
     Character(sf::Texture texture, const sf::Vector2f& pos);
     virtual ~Character();
 
     virtual void Draw(sf::RenderWindow& window) = 0;
-    virtual void Update(float& dt, const std::optional<sf::Event> e, const Level& lvl); //const sf::Event::KeyPressed* kp
-    virtual void tryMove(const int& direction, const float& dt, const Level& lvl);
-    bool is_on_floor(const float& dt, const Level& lvl);
+    virtual void Update(float& dt, const Level& lvl);
+    bool isGrounded(const float& dt, const Level& lvl);
+    void gravity(const float& dt);
+
 };

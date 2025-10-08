@@ -4,6 +4,7 @@
 
 Dino::Dino(sf::Texture texture, const sf::Vector2f& pos) : Character(texture, pos){
     sprite->setScale(sf::Vector2f(0.3, 0.3));
+    velocity_max = sf::Vector2f(300, 200);
 }
 
 void Dino::Draw(sf::RenderWindow& window){
@@ -11,24 +12,22 @@ void Dino::Draw(sf::RenderWindow& window){
 }
 
 
-// 0-up 1-left 2-down 3-right
-void Dino::Update(float& dt, const std::optional<sf::Event> e, const Level& lvl){
-
-
-    if(const auto* kp = e->getIf<sf::Event::KeyPressed>()){
-        int direction; 
-
-        if(kp->scancode == sf::Keyboard::Scancode::S)
-            direction = 2;
-        if(kp->scancode == sf::Keyboard::Scancode::W)
-            direction = 0;
-        if(kp->scancode == sf::Keyboard::Scancode::A)
-            direction = 1;
-        if(kp->scancode == sf::Keyboard::Scancode::D)
-            direction = 3;
-
-        Character::tryMove(direction, dt, lvl);
+void Dino::moveBy(const sf::Event::KeyPressed* kp, const float& dt, const bool& isPressed, const Level& lvl){
+    if(isPressed){
+        if(kp->scancode == sf::Keyboard::Scancode::D && velocity.x <= velocity_max.x)
+            velocity.x += speed;
+        if(kp->scancode == sf::Keyboard::Scancode::A && -velocity.x <= velocity_max.x) 
+            velocity.x -= speed;
+        if(kp->scancode == sf::Keyboard::Scancode::Space && grounded)
+            velocity.y -= velocity_max.y;
     }
-    
-    Character::Update(dt, e, lvl);
+    else
+        velocity.x = 0;
+};
+
+void Dino::Update(float& dt, const Level& lvl){
+
+    Character::Update(dt, lvl);
+
+    sprite->move(sf::Vector2f(dx, dy));
 }

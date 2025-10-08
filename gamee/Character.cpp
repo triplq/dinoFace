@@ -1,61 +1,46 @@
 #include "Character.h"
 #include <iostream>
 
-Character::Character(sf::Texture n_texture, const sf::Vector2f& pos) : speed(900), texture(n_texture){
+Character::Character(sf::Texture n_texture, const sf::Vector2f& pos) : speed(100), texture(n_texture){
     sprite = new sf::Sprite(texture);
     sprite->setPosition(pos);
-    on_floor = true;
+    sprite->setOrigin(sf::Vector2f(sprite->getGlobalBounds().size.x/2, sprite->getGlobalBounds().size.y/2));
+    // on_floor = true;
+    velocity = sf::Vector2f(0.f,0.f);
+    dx = 0;
+    dy = 0;
 };
 
 Character::~Character() { delete sprite; };
 
-void Character::Update(float& dt, const std::optional<sf::Event> e, const Level& lvl){
-    if(is_on_floor(dt, lvl))
-        std::cerr << "is on floor\n";
-    else
-        Character::tryMove(2, dt, lvl);
-    // if(level.getIntersects(sprite->getGlobalBounds()))
+void Character::Update(float& dt, const Level& lvl){
+    dx = velocity.x * dt;
+    dy = velocity.y * dt;
+
+    Character::isGrounded(dt, lvl);
+
+    gravity(dt);
 
 
 // gravity
 };
 
+void Character::gravity(const float& dt){
 
-// 0-up 1-left 2-down 3-right
-void Character::tryMove(const int& direction, const float& dt, const Level& lvl){
-        switch(direction){
-            case 0:
-                if(is_on_floor(dt, lvl)){
-                    sprite->move(sf::Vector2f(0, -100));
-                    if(lvl.getIntersects(sprite->getGlobalBounds()))
-                        sprite->move(sf::Vector2f(0, 100));
-                }
-                break;
-            case 2:
-                sprite->move(sf::Vector2f(0, dt*speed));
-                if(lvl.getIntersects(sprite->getGlobalBounds()))
-                    sprite->move(sf::Vector2f(0, -dt*speed));
-                break;
-            case 1:
-                sprite->move(sf::Vector2f(-dt*speed, 0));
-                if(lvl.getIntersects(sprite->getGlobalBounds()))
-                    sprite->move(sf::Vector2f(dt*speed, 0));
-                break;
-            case 3:
-                sprite->move(sf::Vector2f(dt*speed, 0));
-                if(lvl.getIntersects(sprite->getGlobalBounds()))
-                    sprite->move(sf::Vector2f(-dt*speed, 0));
-                break;
-        }
+    if(!grounded){
+        velocity.y += speed * dt * g;
+    }
+    else if(grounded)
+        velocity.y = 0;
 };
 
-bool Character::is_on_floor(const float& dt, const Level& lvl){
-    sprite->move(sf::Vector2f(0, dt*speed));
-    if(lvl.getIntersects(sprite->getGlobalBounds())){
-        sprite->move(sf::Vector2f(0, -dt*speed));
-        return true;
+void Character::isGrounded(const float& dt, const Level& lvl){
+    auto pos = sprite->getGlobalBounds();
+    auto predictedBB = pos;
+    predictedBB.position.y += dy;
+    if(lvl.getIntersects(predictedBB)){
+        grounded = true;
     }
-    sprite->move(sf::Vector2f(0, -dt*speed));
 
-    return false;
+    grounded = false;
 };

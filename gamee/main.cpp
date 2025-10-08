@@ -21,12 +21,19 @@ int main() {
 
     while(window.isOpen()){
         auto dt = clock.restart().asSeconds();
-        while(const auto e = window.pollEvent()){
-            if(e->is<sf::Event::Closed>())
-                window.close();
+        const auto e = window.pollEvent();
 
-            dino.Update(dt, e, level);
+        if(e->is<sf::Event::Closed>())
+            window.close();
+
+
+        if(e->is<sf::Event::KeyPressed>() || e->is<sf::Event::KeyReleased>()){
+            bool isPressed = (e->is<sf::Event::KeyPressed>());
+            const auto* kp = e->getIf<sf::Event::KeyPressed>();
+            dino.moveBy(kp, dt, isPressed, level);
         }
+
+        dino.Update(dt, level);
 
         window.clear();
         back.Draw(window);
