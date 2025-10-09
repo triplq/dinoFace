@@ -4,7 +4,7 @@
 
 Dino::Dino(sf::Texture texture, const sf::Vector2f& pos) : Character(texture, pos){
     sprite->setScale(sf::Vector2f(0.3, 0.3));
-    velocity_max = sf::Vector2f(300, 200);
+    velocity_max = sf::Vector2f(100, 300);
 }
 
 void Dino::Draw(sf::RenderWindow& window){

@@ -6,12 +6,11 @@
 class Character{
 protected:
     const float speed;
-    float g = 9.8f;
     sf::Sprite *sprite;
     sf::Texture texture;
-    bool grounded;
     sf::Vector2f velocity;
-    // const float E = 0.1f;
+    float g = 1000.0f;
+    bool grounded;
 
     float dx;
     float dy;
@@ -22,7 +21,7 @@ public:
 
     virtual void Draw(sf::RenderWindow& window) = 0;
     virtual void Update(float& dt, const Level& lvl);
-    bool isGrounded(const float& dt, const Level& lvl);
-    void gravity(const float& dt);
 
+    void collision(const float& dt, const Level& lvl);
+    void gravity(const float& dt, const Level& lvl);
 };
